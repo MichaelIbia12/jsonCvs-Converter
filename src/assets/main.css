@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #1d1d1d;
+
+}
+.body{
+    display: flex;
+    gap: 5px;
+}
+textarea{
+   
+    max-height: 92vh;
+    min-height: 92vh;
+
+    max-width: 49vw;
+    min-width: 49vw;
+
+    outline: none;
+
+    padding: 10px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.486);
+
+    color: white;
+
+}
+
+button{
+    margin-top: 10px;
+    width: 100px;
+    height: 40px;
+}
