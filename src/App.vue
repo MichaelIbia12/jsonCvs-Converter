@@ -1,14 +1,16 @@
 <template>
   <div class="body">
-    <div class="json">
-        <textarea name="json" v-model="jsonTextArea"></textarea>
-    </div>
     <div class="cvs">
-      <textarea name="cvs" v-model="cvsTextArea"></textarea>
+      <textarea name="cvs" v-model="cvsTextArea" placeholder="Cvs"></textarea>
+    </div>
+    <div class="json">
+        <textarea name="json" v-model="jsonTextArea" placeholder="Json"></textarea>
     </div>
   </div>
       <div class="btn">
         <button @click="converter(jsonTextArea, cvsTextArea)">Convert</button>
+        <button @click="clearField()">Clear</button>
+
       </div>
 </template>
 
@@ -24,6 +26,9 @@ function importing(){
 }
 
 function converter(json: string, cvs: string){
+  if(cvsTextArea.value == ''){
+    alert("cvs is empty")
+  }else{
   let resultArray: string[][] = [];
   let jsonLines: string[] = json.split("\n");
   let jsonHeaders: string = jsonLines.shift() || "";
@@ -46,13 +51,19 @@ function converter(json: string, cvs: string){
     }
   }
 
-  for (let i = 0; i < resultArray.length; i++) {
-
-    
+  if(resultArray.length < 1){
+    alert("Cvs not in right format")
+    clearField()
+  }else{
+    jsonTextArea.value = JSON.stringify(resultArray, null, 2).replace(/},/g, "},\r\n");
   }
 
-  cvsTextArea.value = JSON.stringify(resultArray, null, 2).replace(/},/g, "},\r\n");
-  
-
 }
+}
+function clearField(){
+  jsonTextArea.value = ""
+  cvsTextArea.value = ""
+}
+
+
 </script>

@@ -10,6 +10,7 @@ body{
 .body{
     display: flex;
     gap: 5px;
+    flex-wrap: wrap;
 }
 textarea{
    
@@ -33,4 +34,7 @@ button{
     margin-top: 10px;
     width: 100px;
     height: 40px;
+    margin-right: 5px;
+    margin-left: 10px;
+    border: none;
 }
